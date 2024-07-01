@@ -10,7 +10,7 @@ export class OrganizacionsService {
 
   constructor(
     @InjectRepository(Organizacion)
-      private readonly organizacionRepository: Repository<Organizacion>
+      private readonly organizacionRepository: Repository<Organizacion>,
   ){}
 
   async  create(createOrganizacionDto: CreateOrganizacionDto) {

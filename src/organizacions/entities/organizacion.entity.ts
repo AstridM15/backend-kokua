@@ -1,4 +1,6 @@
-import { Column,  Entity } from "typeorm";
+
+import { Voluntariado } from "src/voluntariados/entities/voluntariado.entity";
+import { Column,  Entity, OneToMany } from "typeorm";
 
 @Entity()
 export class Organizacion {
@@ -20,4 +22,6 @@ export class Organizacion {
     tipo_usuario: number;
     @Column()
     contrasena: string;
+    @OneToMany(() => Voluntariado, (voluntariado) => voluntariado.organizacion)
+    voluntariados: Voluntariado[];
 }

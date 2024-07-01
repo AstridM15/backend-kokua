@@ -1,26 +1,40 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Ubigeo } from 'src/ubigeos/entities/ubigeo.entity';
+import { Repository } from 'typeorm';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
-
+import { Usuario } from './entities/usuario.entity';
 @Injectable()
 export class UsuariosService {
-  create(createUsuarioDto: CreateUsuarioDto) {
+
+  constructor(
+    @InjectRepository(Usuario)
+    private readonly usuarioRepository: Repository<Usuario>,
+   
+    @InjectRepository(Ubigeo)
+   private readonly ubigeoRepository: Repository<Ubigeo>,
+   
+  ){}
+
+  async create(createUsuarioDto: CreateUsuarioDto) {
     return 'This action adds a new usuario';
   }
 
-  findAll() {
-    return `This action returns all usuarios`;
+
+  async  findAll() {
+    return await this.usuarioRepository.find() ;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} usuario`;
+  async  findOne(id: number) {
+    return await `This action returns a #${id} usuario`;
   }
 
-  update(id: number, updateUsuarioDto: UpdateUsuarioDto) {
-    return `This action updates a #${id} usuario`;
+  async update(id: number, updateUsuarioDto: UpdateUsuarioDto) {
+    return await `This action updates a #${id} usuario`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} usuario`;
+  async  remove(id: number) {
+    return await `This action removes a #${id} usuario`;
   }
 }

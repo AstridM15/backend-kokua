@@ -8,5 +8,6 @@ import { Ubigeo } from './entities/ubigeo.entity';
   imports: [TypeOrmModule.forFeature([Ubigeo])],
   controllers: [UbigeosController],
   providers: [UbigeosService],
+  exports:[TypeOrmModule]
 })
 export class UbigeosModule {}
