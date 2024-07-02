@@ -1,6 +1,7 @@
 
+import { Sector } from "src/sectors/entities/sector.entity";
 import { Ubigeo} from "src/ubigeos/entities/ubigeo.entity";
-import { Column, Entity, JoinColumn, ManyToOne } from "typeorm";
+import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne } from "typeorm";
 
 @Entity()
 export class Usuario {
@@ -26,4 +27,19 @@ export class Usuario {
     @ManyToOne(() => Ubigeo, (ubigeo) => ubigeo.idUbigeo)
     @JoinColumn({ name: 'idUbigeo' })
     ubigeo: Ubigeo;
+
+   
+    @ManyToMany(() => Sector, (sector) => sector.usuarios)
+    @JoinTable({
+        name: 'usuariosector',
+        joinColumn: {
+            name: 'idUsuario',
+            referencedColumnName: 'idUsuario'
+        },
+        inverseJoinColumn: {
+            name: 'idSector',
+            referencedColumnName: 'idSector'
+        }
+    })
+    sectors: Sector[];
 }

@@ -34,9 +34,8 @@ export class VoluntariadosService {
   }
 
   async findOne(id: number) {
-    return `This action returns a #${id} voluntariado`;
+    return await this.voluntariadoRepository.findOne({ where: { idVoluntariado: id } });
   }
-
   async update(id: number, updateVoluntariadoDto: UpdateVoluntariadoDto) {
     return `This action updates a #${id} voluntariado`;
   }

@@ -2,9 +2,12 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { UsuariosService } from './usuarios.service';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
+import { Usuario } from './entities/usuario.entity';
+import { Sector } from 'src/sectors/entities/sector.entity';
 
 @Controller('usuarios')
 export class UsuariosController {
+  
   constructor(private readonly usuariosService: UsuariosService) {}
 
   @Post()
@@ -31,4 +34,12 @@ export class UsuariosController {
   remove(@Param('id') id: number) {
     return this.usuariosService.remove(id);
   }
+  @Get(':id/sectores')
+  getSectoresByUsuario(@Param('id') id: number) {
+    return this.usuariosService.getSectoresByUsuario(id);
+  }
+
+  
+
+
 }

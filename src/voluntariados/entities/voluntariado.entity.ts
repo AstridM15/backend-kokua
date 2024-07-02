@@ -1,8 +1,8 @@
 import { Organizacion } from "src/organizacions/entities/organizacion.entity";
 import { Sector } from "src/sectors/entities/sector.entity";
 import { Ubigeo } from "src/ubigeos/entities/ubigeo.entity";
-import { Column, Entity, JoinColumn, ManyToOne } from "typeorm";
-
+import { Column, Entity, JoinColumn, ManyToOne, ViewColumn } from "typeorm";
+import * as moment from 'moment';
 @Entity()
 export class Voluntariado {
     @Column({primary:true, generated:true})
@@ -24,7 +24,15 @@ export class Voluntariado {
     @Column()
     fecha_inicio: Date;
     @Column()
+    direccion: string;
+   
+
+    
+
+
+    @Column()
     fecha_final: Date;
+
     @Column()
     idUbigeo: number;
     @ManyToOne(() => Ubigeo, (ubigeo) => ubigeo.idUbigeo)

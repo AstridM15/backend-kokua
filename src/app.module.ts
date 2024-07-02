@@ -40,6 +40,7 @@ async function checkDatabaseConnection(connection: Connection) {
     OrganizacionsModule,
     VoluntariadosModule,
 
+
   ],
   controllers : [],
   providers: []

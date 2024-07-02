@@ -6,11 +6,15 @@ import { UbigeosModule } from 'src/ubigeos/ubigeos.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UbigeosService } from 'src/ubigeos/ubigeos.service';
 import { Ubigeo } from 'src/ubigeos/entities/ubigeo.entity';
+import { SectorsModule } from 'src/sectors/sectors.module';
+import { Sector } from 'src/sectors/entities/sector.entity';
+
 
 @Module({
-  imports:[TypeOrmModule.forFeature([Usuario]) , UbigeosModule],
+  imports:[TypeOrmModule.forFeature([Usuario, Sector]), UbigeosModule],
 
   controllers: [UsuariosController],
   providers: [UsuariosService, UbigeosService],
+  exports:[TypeOrmModule]
 })
 export class UsuariosModule {}

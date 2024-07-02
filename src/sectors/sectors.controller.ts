@@ -31,4 +31,9 @@ export class SectorsController {
   remove(@Param('id') id: string) {
     return this.sectorsService.remove(+id);
   }
+
+  @Get(':id/usuarios')
+  getUsuariosBySector(@Param('id') id: number) {
+    return this.sectorsService.getUsuariosBySector(id);
+  }
 }

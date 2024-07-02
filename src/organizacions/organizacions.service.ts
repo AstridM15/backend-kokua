@@ -21,10 +21,9 @@ export class OrganizacionsService {
     return await this.organizacionRepository.find(); 
   }
 
-  async  findOne(id: number) {
-    return `This action returns a #${id} organizacion`;
+  async findOne(id: number) {
+    return await this.organizacionRepository.findOne({ where: { idOrganizacion: id } });
   }
-
   async  update(id: number, updateOrganizacionDto: UpdateOrganizacionDto) {
     return `This action updates a #${id} organizacion`;
   }
