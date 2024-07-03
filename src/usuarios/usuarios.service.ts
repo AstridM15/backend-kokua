@@ -11,7 +11,8 @@ export class UsuariosService {
  
 
   constructor(
-
+    @InjectRepository(Sector)
+    private readonly sectorRepository: Repository<Sector>,
 
     @InjectRepository(Usuario)
     private readonly usuarioRepository: Repository<Usuario>,
@@ -21,9 +22,9 @@ export class UsuariosService {
    
   ){}
  
-  async create(createUsuarioDto: CreateUsuarioDto) {
+ /* async create(createUsuarioDto: CreateUsuarioDto) {
     return 'This action adds a new usuario';
-  }
+  }*/
 
  
   async  findAll() {
@@ -53,4 +54,21 @@ export class UsuariosService {
     return usuario[0].sectors;
   }
 
+  async create(createUsuarioDto: CreateUsuarioDto): Promise<Usuario> {
+    const usuario = new Usuario();
+    usuario.nombre = createUsuarioDto.nombre;
+    usuario.apellido_paterno = createUsuarioDto.apellido_paterno;
+    usuario.apellido_materno = createUsuarioDto.apellido_materno;
+    usuario.correo = createUsuarioDto.correo;
+    usuario.contrasena = createUsuarioDto.contrasena;
+    usuario.tipo_usuario = createUsuarioDto.tipo_usuario;
+    usuario.idUbigeo = createUsuarioDto.idUbigeo;
+  
+    // Mapear el arreglo de sectores a un arreglo de entidades Sector
+    const sectors = await this.sectorRepository.findByIds(createUsuarioDto.sectors);
+    usuario.sectors = sectors;
+  
+    // TypeORM se encargará de insertar los registros en la tabla intermedia automáticamente
+    return await this.usuarioRepository.save(usuario);
+  }
 }

@@ -28,7 +28,7 @@ export class Usuario {
     @JoinColumn({ name: 'idUbigeo' })
     ubigeo: Ubigeo;
 
-   
+   /*
     @ManyToMany(() => Sector, (sector) => sector.usuarios)
     @JoinTable({
         name: 'usuariosector',
@@ -41,5 +41,22 @@ export class Usuario {
             referencedColumnName: 'idSector'
         }
     })
-    sectors: Sector[];
+    sectors: Sector[];*/
+
+  @ManyToMany(() => Sector, (sector) => sector.idSector, {
+    cascade: true,
+  })
+  @JoinTable({
+    name: 'usuariosector',
+    joinColumn: {
+      name: 'idUsuario',
+      referencedColumnName: 'idUsuario',
+    },
+    inverseJoinColumn: {
+      name: 'idSector',
+      referencedColumnName: 'idSector',
+    },
+  })
+  sectors: Sector[];
+
 }

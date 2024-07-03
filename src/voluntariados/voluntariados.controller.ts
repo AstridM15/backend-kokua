@@ -18,17 +18,20 @@ export class VoluntariadosController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.voluntariadosService.findOne(+id);
+  findOne(@Param('id') id: number) {
+    return this.voluntariadosService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateVoluntariadoDto: UpdateVoluntariadoDto) {
-    return this.voluntariadosService.update(+id, updateVoluntariadoDto);
+  update(@Param('id') id: number, @Body() updateVoluntariadoDto: UpdateVoluntariadoDto) {
+    return this.voluntariadosService.update(id, updateVoluntariadoDto);
   }
-
+  @Get('organizacion/:idOrganizacion')
+  findVoluntariadosByOrganizacionId(@Param('idOrganizacion') idOrganizacion: number) {
+    return this.voluntariadosService.findVoluntariadosByOrganizacionId(idOrganizacion);
+  }
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.voluntariadosService.remove(+id);
+  remove(@Param('id') id: number) {
+    return this.voluntariadosService.remove(id);
   }
 }

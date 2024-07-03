@@ -11,7 +11,7 @@ export class Sector {
 
    @OneToMany(() => Voluntariado, (voluntariado) => voluntariado.sector)
     voluntariados: Voluntariado[];
-
+/*
     @ManyToMany(() => Usuario, (usuario) => usuario.sectors)
     @JoinTable({
         name: 'usuariosector',
@@ -24,5 +24,9 @@ export class Sector {
             referencedColumnName: 'idUsuario'
         }
     })
-    usuarios: Usuario[];
+    usuarios: Usuario[];*/
+    @ManyToMany(() => Usuario, (usuario) => usuario.idUsuario, {
+        cascade: true,
+      })
+      usuarios: Usuario[];
 }

@@ -1,4 +1,4 @@
-import { IsInt, IsString } from "class-validator";
+import { IsArray, IsInt, IsString } from "class-validator";
 
 
 
@@ -18,4 +18,7 @@ export class CreateUsuarioDto {
     tipo_usuario: number;
     @IsInt()
     idUbigeo?: number;
+    @IsArray()
+    @IsInt({ each: true })
+    sectors: number[];
 }

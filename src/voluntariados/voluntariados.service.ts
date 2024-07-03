@@ -43,4 +43,12 @@ export class VoluntariadosService {
   async remove(id: number) {
     return `This action removes a #${id} voluntariado`;
   }
+
+  async findVoluntariadosByOrganizacionId(idOrganizacion: number): Promise<Voluntariado[]> {
+    // Aquí debes implementar la lógica para obtener los voluntariados asociados a la organización con el ID proporcionado
+    // Por ejemplo, puedes utilizar un repositorio o una consulta a la base de datos
+    return this.voluntariadoRepository.find({
+      where: { idOrganizacion: idOrganizacion },
+    });
+  }
 }
