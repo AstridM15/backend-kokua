@@ -51,6 +51,7 @@ export class VoluntariadosService {
       where: { idOrganizacion: idOrganizacion },
     });
   }
+  
 
   async getSectorName(idVoluntariado: number): Promise<string> {
     const voluntariado: Voluntariado = await this.voluntariadoRepository.findOne({
