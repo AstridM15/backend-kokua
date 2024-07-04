@@ -34,4 +34,9 @@ export class VoluntariadosController {
   remove(@Param('id') id: number) {
     return this.voluntariadosService.remove(id);
   }
+
+  @Get(':id/sector')
+  getSectorName(@Param('id') id: number) {
+    return this.voluntariadosService.getSectorName(id);
+  }
 }

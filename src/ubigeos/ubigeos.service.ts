@@ -20,8 +20,8 @@ export class UbigeosService {
     return await this.ubigeoRepository.find(); 
   }
 
-  async findOne(id: number) {
-    return `This action returns a #${id} ubigeo`;
+  async findOne(idUbigeo: number) {
+    return await this.ubigeoRepository.findOne({ where: { idUbigeo: idUbigeo } });
   }
 
   async  update(id: number, updateUbigeoDto: UpdateUbigeoDto) {

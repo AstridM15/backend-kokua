@@ -51,4 +51,17 @@ export class VoluntariadosService {
       where: { idOrganizacion: idOrganizacion },
     });
   }
+
+  async getSectorName(idVoluntariado: number): Promise<string> {
+    const voluntariado: Voluntariado = await this.voluntariadoRepository.findOne({
+      where: { idVoluntariado: idVoluntariado },
+    });
+    if (!voluntariado) {
+      return null;
+    }
+    const sector = await this.sectorRepository.findOne({
+      where: { idSector: voluntariado.idSector },
+    });
+    return sector ? sector.nombre : null;
+  }
 }
