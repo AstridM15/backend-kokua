@@ -33,7 +33,8 @@ async function checkDatabaseConnection(connection: Connection) {
       database: 'tabla_kokua_1', // Cambia esto por el nombre de tu base de datos
     autoLoadEntities: true,
       synchronize: false, // Esto sincronizará automáticamente los modelos con la base de datos (solo para desarrollo)
-    }),
+   
+      name: 'default' }),
     UsuariosModule,
     UbigeosModule,
     SectorsModule,

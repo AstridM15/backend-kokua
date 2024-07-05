@@ -40,6 +40,12 @@ export class UsuariosController {
     return this.usuariosService.getSectoresByUsuario(id);
   }
 
+
+  @Get(':idUsuario/favoritos')
+  async getfavoritosDeUnUsuario(@Param('idUsuario') idUsuario: number) {
+    const Voluntariados= await this.usuariosService.getfavoritosDeUnUsuario(idUsuario);
+    return Voluntariados;
+  }
   
 
 

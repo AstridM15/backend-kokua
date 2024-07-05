@@ -12,9 +12,9 @@ import { SectorsService } from 'src/sectors/sectors.service';
 import { Voluntariado } from './entities/voluntariado.entity';
 
 @Module({
-  imports:[TypeOrmModule.forFeature([Voluntariado]) , UbigeosModule, SectorsModule, OrganizacionsModule],
+  imports:[TypeOrmModule.forFeature([Voluntariado, Usuario]) , UbigeosModule, SectorsModule, OrganizacionsModule],
   controllers: [VoluntariadosController],
   providers: [VoluntariadosService, UbigeosService, SectorsService,OrganizacionsService],
-  exports: [TypeOrmModule],
+  exports: [TypeOrmModule]
 })
 export class VoluntariadosModule {}

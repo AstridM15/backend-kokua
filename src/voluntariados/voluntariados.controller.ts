@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Res } from '@nestjs/common';
 import { VoluntariadosService } from './voluntariados.service';
 import { CreateVoluntariadoDto } from './dto/create-voluntariado.dto';
 import { UpdateVoluntariadoDto } from './dto/update-voluntariado.dto';
@@ -39,4 +39,11 @@ export class VoluntariadosController {
   getSectorName(@Param('id') id: number) {
     return this.voluntariadosService.getSectorName(id);
   }
+
+  @Get(':idVoluntariado/usuarios')
+  async getUsuariosDeUnVoluntariado(@Param('idVoluntariado') idVoluntariado: number) {
+    const usuarios = await this.voluntariadosService.getUsuariosDeUnVoluntariado(idVoluntariado);
+    return usuarios;
+  }
+
 }
