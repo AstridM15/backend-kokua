@@ -1,8 +1,9 @@
 
 import { Sector } from "src/sectors/entities/sector.entity";
 import { Ubigeo} from "src/ubigeos/entities/ubigeo.entity";
+import { Usuariovoluntariado } from "src/usuariovoluntariados/entities/usuariovoluntariado.entity";
 import { Voluntariado } from "src/voluntariados/entities/voluntariado.entity";
-import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne } from "typeorm";
+import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany } from "typeorm";
 
 @Entity()
 export class Usuario {
@@ -28,6 +29,11 @@ export class Usuario {
     @ManyToOne(() => Ubigeo, (ubigeo) => ubigeo.idUbigeo)
     @JoinColumn({ name: 'idUbigeo' })
     ubigeo: Ubigeo;
+
+
+    @OneToMany(() => Usuariovoluntariado, (usuariovoluntariado) => usuariovoluntariado.usuario)
+    usuariovoluntariados: Usuariovoluntariado[];
+
 
    /*
     @ManyToMany(() => Sector, (sector) => sector.usuarios)
@@ -59,22 +65,5 @@ export class Usuario {
     },
   })
   sectors: Sector[];
-
-
-  @ManyToMany(() => Voluntariado, (voluntariado) => voluntariado.idVoluntariado, {
-    cascade: true,
-  })
-  @JoinTable({
-    name: 'usuariovoluntariado',
-    joinColumn: {
-      name: 'idUsuario',
-      referencedColumnName: 'idUsuario',
-    },
-    inverseJoinColumn: {
-      name: 'idVoluntariado',
-      referencedColumnName: 'idVoluntariado',
-    },
-  })
-  voluntariados: Voluntariado[];
 
 }

@@ -5,6 +5,7 @@ import { UpdateUsuarioDto } from './dto/update-usuario.dto';
 import { Usuario } from './entities/usuario.entity';
 import { Sector } from 'src/sectors/entities/sector.entity';
 
+
 @Controller('usuarios')
 export class UsuariosController {
   
@@ -41,11 +42,7 @@ export class UsuariosController {
   }
 
 
-  @Get(':idUsuario/favoritos')
-  async getfavoritosDeUnUsuario(@Param('idUsuario') idUsuario: number) {
-    const Voluntariados= await this.usuariosService.getfavoritosDeUnUsuario(idUsuario);
-    return Voluntariados;
-  }
+ 
   
 
 

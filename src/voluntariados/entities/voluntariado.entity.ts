@@ -1,9 +1,10 @@
 import { Organizacion } from "src/organizacions/entities/organizacion.entity";
 import { Sector } from "src/sectors/entities/sector.entity";
 import { Ubigeo } from "src/ubigeos/entities/ubigeo.entity";
-import { Column, Entity, JoinColumn, ManyToMany, ManyToOne, ViewColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToMany, ManyToOne, OneToMany, ViewColumn } from "typeorm";
 import * as moment from 'moment';
 import { Usuario } from "src/usuarios/entities/usuario.entity";
+import { Usuariovoluntariado } from "src/usuariovoluntariados/entities/usuariovoluntariado.entity";
 @Entity()
 export class Voluntariado {
     @Column({primary:true, generated:true})
@@ -48,10 +49,8 @@ export class Voluntariado {
     @JoinColumn({ name: 'idSector' })
     sector: Sector;
 
-    @ManyToMany(() => Usuario, (usuario) => usuario.idUsuario, {
-        cascade: true,
-      })
-      usuarios: Usuario[];
+    @OneToMany(() => Usuariovoluntariado, (usuariovoluntariado) => usuariovoluntariado.voluntariado)
+  usuariovoluntariados: Usuariovoluntariado[];
 
 
       

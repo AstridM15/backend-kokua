@@ -15,17 +15,12 @@ export class UsuariosService {
     @InjectRepository(Sector)
     private readonly sectorRepository: Repository<Sector>,
 
-    @InjectRepository(Voluntariado)
-    private readonly voluntariadoRepository: Repository<Voluntariado>,
-
 
     @InjectRepository(Usuario)
     private readonly usuarioRepository: Repository<Usuario>,
    
     @InjectRepository(Ubigeo)
    private readonly ubigeoRepository: Repository<Ubigeo>,
-   @InjectEntityManager()
-   private readonly entityManager: EntityManager
   ){}
  
  /* async create(createUsuarioDto: CreateUsuarioDto) {
@@ -78,16 +73,6 @@ export class UsuariosService {
     return await this.usuarioRepository.save(usuario);
   }
 
-  async getfavoritosDeUnUsuario(idUsuario: number): Promise<any[]> {
-    const query = `
-      SELECT v.*
-      FROM usuariovoluntariado uv
-      INNER JOIN voluntariado v ON uv.idVoluntariado = v.idVoluntariado
-      WHERE uv.idUsuario = ? AND uv.tipo_relacion = 2
-    `;
-  
-    const voluntariados = await this.entityManager.query(query, [idUsuario]);
-  
-    return voluntariados ;
-  }
+
 }
+

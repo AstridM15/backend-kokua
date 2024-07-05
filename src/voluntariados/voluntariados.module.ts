@@ -10,9 +10,10 @@ import { UbigeosService } from 'src/ubigeos/ubigeos.service';
 import { OrganizacionsService } from 'src/organizacions/organizacions.service';
 import { SectorsService } from 'src/sectors/sectors.service';
 import { Voluntariado } from './entities/voluntariado.entity';
+import { UsuariovoluntariadosModule } from 'src/usuariovoluntariados/usuariovoluntariados.module';
 
 @Module({
-  imports:[TypeOrmModule.forFeature([Voluntariado, Usuario]) , UbigeosModule, SectorsModule, OrganizacionsModule],
+  imports:[TypeOrmModule.forFeature([Voluntariado]) , UbigeosModule, SectorsModule, OrganizacionsModule],
   controllers: [VoluntariadosController],
   providers: [VoluntariadosService, UbigeosService, SectorsService,OrganizacionsService],
   exports: [TypeOrmModule]

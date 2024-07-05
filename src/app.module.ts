@@ -11,6 +11,7 @@ import { dirname } from 'path';
 import { SectorsModule } from './sectors/sectors.module';
 import { OrganizacionsModule } from './organizacions/organizacions.module';
 import { VoluntariadosModule } from './voluntariados/voluntariados.module';
+import { UsuariovoluntariadosModule } from './usuariovoluntariados/usuariovoluntariados.module';
 
 // Agrega la función async checkDatabaseConnection
 async function checkDatabaseConnection(connection: Connection) {
@@ -40,6 +41,7 @@ async function checkDatabaseConnection(connection: Connection) {
     SectorsModule,
     OrganizacionsModule,
     VoluntariadosModule,
+    UsuariovoluntariadosModule,
 
 
   ],

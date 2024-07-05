@@ -40,10 +40,6 @@ export class VoluntariadosController {
     return this.voluntariadosService.getSectorName(id);
   }
 
-  @Get(':idVoluntariado/usuarios')
-  async getUsuariosDeUnVoluntariado(@Param('idVoluntariado') idVoluntariado: number) {
-    const usuarios = await this.voluntariadosService.getUsuariosDeUnVoluntariado(idVoluntariado);
-    return usuarios;
-  }
+
 
 }
