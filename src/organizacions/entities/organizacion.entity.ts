@@ -24,4 +24,5 @@ export class Organizacion {
     contrasena: string;
     @OneToMany(() => Voluntariado, (voluntariado) => voluntariado.organizacion)
     voluntariados: Voluntariado[];
+    
 }
